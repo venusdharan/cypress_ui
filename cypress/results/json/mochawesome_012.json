@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-04-29T09:25:36.124Z",
+    "end": "2022-04-29T09:25:43.781Z",
+    "duration": 7657,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "258b2a9e-13ea-415d-a9eb-309e1611894d",
+      "title": "",
+      "fullFile": "cypress/integration/admitpatient.spec.js",
+      "file": "cypress/integration/admitpatient.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "28c5aae0-9eec-44f7-9121-c4372379663c",
+          "title": "Visit active Patients",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Load UI",
+              "fullTitle": "Visit active Patients Load UI",
+              "timedOut": null,
+              "duration": 7595,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\ncy.url().then(function (url) {\n  if (url.indexOf(\"auth\") !== -1) {\n    cy.get(\"#username\").type(username);\n    cy.get(\"#password\").type(password);\n    cy.get(\"#kc-login\").click();\n  } //cy.get(\"ls-page-header[type=active_patients]\").should(\"be.visible\");\n  //start logged\n\n  cy.wait(2000);\n  cy.get('[image=\"active-patients.png\"]').find('a').click();\n  cy.wait(2000); //get span content and parent element\n  cy.get('span').contains(' Admit Patient ').parent().click(); //cy.get('.d-lg-flex d-md-none d-sm-none d-none my-2 > button').click()\n});",
+              "err": {},
+              "uuid": "fd116ea9-0786-4141-abeb-839a249b3ccf",
+              "parentUUID": "28c5aae0-9eec-44f7-9121-c4372379663c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "fd116ea9-0786-4141-abeb-839a249b3ccf"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 7595,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/json",
+        "files": [
+          "./cypress/results/json/*.json"
+        ],
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

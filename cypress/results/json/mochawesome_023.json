@@ -1,0 +1,113 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2022-04-29T09:54:43.397Z",
+    "end": "2022-04-29T09:54:54.853Z",
+    "duration": 11456,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b5a587cc-01c9-4c45-9b3a-836f1ef1a2bb",
+      "title": "",
+      "fullFile": "cypress/integration/dischargebutton.spec.js",
+      "file": "cypress/integration/dischargebutton.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c2f6ec8c-d516-40c8-bee8-5980d6b02916",
+          "title": "Visit active Patients",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Load UI",
+              "fullTitle": "Visit active Patients Load UI",
+              "timedOut": null,
+              "duration": 11378,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\ncy.url().then(function (url) {\n  if (url.indexOf(\"auth\") !== -1) {\n    cy.get(\"#username\").type(username);\n    cy.get(\"#password\").type(password);\n    cy.get(\"#kc-login\").click();\n  } //cy.get(\"ls-page-header[type=active_patients]\").should(\"be.visible\");\n  //start logged\n\n  cy.wait(2000);\n  cy.get('[image=\"active-patients.png\"]').find('a').click();\n  cy.wait(2000);\n  var pid = \"1456\"; //getting patient id from span-div-tr-td-checkbox \n  if (discharge_data) {\n    if (discharge_data.patients.length > 0) {\n      for (let index = 0; index < discharge_data.patients.length; index++) {\n        const element = discharge_data.patients[index];\n        console.log(element);\n        var el = cy.get(\"span\").contains(element);\n        if (el) {\n          el.parent().parent().parent().get('span').contains(' Discharge ').parent().click({\n            force: true\n          });\n        } else {\n          console.log(\"Patient not found !\");\n        }\n        cy.wait(1000);\n      }\n    }\n  }\n  cy.wait(1000); //cy.get('span')\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'PAT158727035' within the element: [ <span.ng-star-inserted>, 475 more... ] but never did.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'PAT158727035' within the element: [ <span.ng-star-inserted>, 475 more... ] but never did.\n    at Context.eval (https://dev2a.lifesignals.com/__cypress/tests?p=cypress/integration/dischargebutton.spec.js:134:37)",
+                "diff": null
+              },
+              "uuid": "43aa39ed-1ac0-40cd-96da-9b3754e5f2b2",
+              "parentUUID": "c2f6ec8c-d516-40c8-bee8-5980d6b02916",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "43aa39ed-1ac0-40cd-96da-9b3754e5f2b2"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 11378,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/json",
+        "files": [
+          "./cypress/results/json/*.json"
+        ],
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2022-04-29T09:55:20.849Z",
+    "end": "2022-04-29T09:55:31.936Z",
+    "duration": 11087,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "34ec20f1-4c46-45c1-8ce9-ec7001d43a7f",
+      "title": "",
+      "fullFile": "cypress/integration/monitoring-dashboard.spec.js",
+      "file": "cypress/integration/monitoring-dashboard.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "82584851-f87b-492f-b019-8a96baa9f4f1",
+          "title": "Visit Monitoring Dashboard",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Load UI",
+              "fullTitle": "Visit Monitoring Dashboard Load UI",
+              "timedOut": null,
+              "duration": 11011,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\ncy.url().then(function (url) {\n  if (url.indexOf(\"auth\") !== -1) {\n    cy.get(\"#username\").type(username);\n    cy.get(\"#password\").type(password);\n    cy.get(\"#kc-login\").click();\n  } //cy.get(\"ls-page-header[type=active_patients]\").should(\"be.visible\");\n  //start logged\n\n  cy.wait(2000);\n  cy.get('a').contains('Monitoring Dashboard').click();\n  cy.wait(2000); //getting patientid from span -div-div-div-div-matcard(to click card and see zoom view)\n  cy.get('span').contains('PAT413376848').parent().parent().parent().parent().click({\n    force: true\n  }); //click alerts button\n  cy.wait(2000); //click the alert button\n  cy.get('span').contains('notifications_none').parent().parent().click({\n    force: true\n  });\n  cy.wait(2000); //button configure parameter\n  cy.get('span').contains(' Configure Parameters ').parent().click();\n  cy.wait(3000); //button configure technical\n  cy.get('span').contains(' Configure Technical ').parent().click();\n  cy.wait(3000); //button configure destinations\n  cy.get('span').contains(' Configure Destinations ').parent().click();\n  cy.wait(3000);\n  cy.get('span').contains(' Configure Others ').parent().click();\n  cy.wait(1000);\n  cy.get('mat-icon').contains('close').click({\n    force: true\n  }); //get span content and parent element\n  //cy.get('span').contains(' Add to Dashboard ').parent().click()\n  // var pid = \"1456\";\n  // //getting patient id from span-div-tr-td-checkbox \n  // if(admit_data){\n  //     if(admit_data.patients.length > 0){\n  //         for (let index = 0; index < admit_data.patients.length; index++) {\n  //             const element = admit_data.patients[index];\n  //             cy.get(\"span\").contains(element).parent().parent().parent().find(\"mat-checkbox\").click();\n  //             cy.wait(1000);\n  //         }\n  //     }\n  // }\n  // cy.wait(1000);\n  // cy.get(\"span\").contains(\" Add to Dashboard \").parent().click();\n  // cy.wait(1000);\n  //cy.get('.d-lg-flex d-md-none d-sm-none d-none my-2 > button').click()\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'PAT413376848' within the element: [ <span.ng-star-inserted>, 70 more... ] but never did.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'PAT413376848' within the element: [ <span.ng-star-inserted>, 70 more... ] but never did.\n    at Context.eval (https://dev2a.lifesignals.com/__cypress/tests?p=cypress/integration/monitoring-dashboard.spec.js:128:22)",
+                "diff": null
+              },
+              "uuid": "9eafcbb3-ed25-4846-b9f9-1294880e10a5",
+              "parentUUID": "82584851-f87b-492f-b019-8a96baa9f4f1",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "9eafcbb3-ed25-4846-b9f9-1294880e10a5"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 11011,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/json",
+        "files": [
+          "./cypress/results/json/*.json"
+        ],
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

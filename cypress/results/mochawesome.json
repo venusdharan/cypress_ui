@@ -1,0 +1,644 @@
+{
+  "stats": {
+    "suites": 10,
+    "tests": 10,
+    "passes": 6,
+    "pending": 0,
+    "failures": 4,
+    "start": "2022-04-28T10:29:22.437Z",
+    "end": "2022-04-28T10:31:23.792Z",
+    "duration": 93366,
+    "testsRegistered": 10,
+    "passPercent": 60,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c0837f43-0f27-4faf-bb63-c0f374db693c",
+      "title": "",
+      "fullFile": "cypress/integration/activepatients.spec.js",
+      "file": "cypress/integration/activepatients.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2a26f0ab-139a-421f-9722-0d9ac75c0f37",
+          "title": "Visit active Patients",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Load UI",
+              "fullTitle": "Visit active Patients Load UI",
+              "timedOut": null,
+              "duration": 7369,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\ncy.url().then(function (url) {\n  if (url.indexOf(\"auth\") !== -1) {\n    cy.get(\"#username\").type(username);\n    cy.get(\"#password\").type(password);\n    cy.get(\"#kc-login\").click();\n  } //cy.get(\"ls-page-header[type=active_patients]\").should(\"be.visible\");\n  //start logged\n\n  cy.wait(2000);\n  cy.get('[image=\"active-patients.png\"]').find('a').click();\n  cy.wait(2000);\n});",
+              "err": {},
+              "uuid": "b02bbaf0-6a09-410d-86e5-59603ea222a2",
+              "parentUUID": "2a26f0ab-139a-421f-9722-0d9ac75c0f37",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b02bbaf0-6a09-410d-86e5-59603ea222a2"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 7369,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "9f1de59a-5b0e-498d-afa7-288b8fa63330",
+      "title": "",
+      "fullFile": "cypress/integration/addtodashboard.spec.js",
+      "file": "cypress/integration/addtodashboard.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8da3deeb-1dbc-4d84-a0d0-9ca97fe6f905",
+          "title": "Visit active Patients",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Load UI",
+              "fullTitle": "Visit active Patients Load UI",
+              "timedOut": null,
+              "duration": 11744,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\ncy.url().then(function (url) {\n  if (url.indexOf(\"auth\") !== -1) {\n    cy.get(\"#username\").type(username);\n    cy.get(\"#password\").type(password);\n    cy.get(\"#kc-login\").click();\n  } //cy.get(\"ls-page-header[type=active_patients]\").should(\"be.visible\");\n  //start logged\n\n  cy.wait(2000);\n  cy.get('[image=\"active-patients.png\"]').find('a').click();\n  cy.wait(2000); //get span content and parent element\n  //cy.get('span').contains(' Add to Dashboard ').parent().click()\n  var pid = \"1456\"; //getting patient id from span-div-tr-td-checkbox \n  if (admit_data) {\n    if (admit_data.patients.length > 0) {\n      for (let index = 0; index < admit_data.patients.length; index++) {\n        const element = admit_data.patients[index];\n        console.log(element);\n        var el = cy.get(\"span\").contains(element);\n        if (el) {\n          el.parent().parent().parent().find(\"mat-checkbox\").click();\n        } else {\n          console.log(\"Patient not found !\");\n        }\n        cy.wait(1000);\n      }\n    }\n  }\n  cy.wait(1000); // cy.get(\"span\").contains(\" Add to Dashboard \").parent().then(($button) => {\n  //     if (cy.get($button).should('not.be.disabled')) {\n  //         //your logical code for button ACTIVE\n  //         $button.click()\n  //     }\n  //     else {\n  //         //your logical code for button NOT ACTIVE\n  //         cy.log(\"add to dashboard disabled\")\n  //     }\n  // })\n  var add_btn = cy.get(\"span\").contains(\" Add to Dashboard \").parent(); //if(add_btn.is(':visible'))\n  if (add_btn.should('be.disabled')) {\n    //your logical code for button ACTIVE\n    cy.log(\"add to dashboard disabled\");\n  } else {//your logical code for button NOT ACTIVE\n  } //cy.get(\"span\").contains(\" Add to Dashboard \").parent().click();\n\n  cy.wait(1000); //cy.get('.d-lg-flex d-md-none d-sm-none d-none my-2 > button').click()\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'PAT413376848' within the element: [ <span.ng-star-inserted>, 510 more... ] but never did.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'PAT413376848' within the element: [ <span.ng-star-inserted>, 510 more... ] but never did.\n    at Context.eval (https://dev2a.lifesignals.com/__cypress/tests?p=cypress/integration/addtodashboard.spec.js:136:37)",
+                "diff": null
+              },
+              "uuid": "fae8bbcb-938b-4c69-be83-62a171029a03",
+              "parentUUID": "8da3deeb-1dbc-4d84-a0d0-9ca97fe6f905",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "fae8bbcb-938b-4c69-be83-62a171029a03"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 11744,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "ccde5c9f-2d44-4c00-a366-7afcf3910dd9",
+      "title": "",
+      "fullFile": "cypress/integration/admitpatient.spec.js",
+      "file": "cypress/integration/admitpatient.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "28021ec8-15bd-4753-a2a2-8c60932244f3",
+          "title": "Visit active Patients",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Load UI",
+              "fullTitle": "Visit active Patients Load UI",
+              "timedOut": null,
+              "duration": 8360,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\ncy.url().then(function (url) {\n  if (url.indexOf(\"auth\") !== -1) {\n    cy.get(\"#username\").type(username);\n    cy.get(\"#password\").type(password);\n    cy.get(\"#kc-login\").click();\n  } //cy.get(\"ls-page-header[type=active_patients]\").should(\"be.visible\");\n  //start logged\n\n  cy.wait(2000);\n  cy.get('[image=\"active-patients.png\"]').find('a').click();\n  cy.wait(2000); //get span content and parent element\n  cy.get('span').contains(' Admit Patient ').parent().click(); //cy.get('.d-lg-flex d-md-none d-sm-none d-none my-2 > button').click()\n});",
+              "err": {},
+              "uuid": "c24443c9-dd22-4cea-827e-81f3aea4301b",
+              "parentUUID": "28021ec8-15bd-4753-a2a2-8c60932244f3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c24443c9-dd22-4cea-827e-81f3aea4301b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8360,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "c50ca3ce-0647-4734-879f-35bc2fe3d8b2",
+      "title": "",
+      "fullFile": "cypress/integration/dischargebutton.spec.js",
+      "file": "cypress/integration/dischargebutton.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e4f93176-cbc6-4377-91c9-2c5b916ed49d",
+          "title": "Visit active Patients",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Load UI",
+              "fullTitle": "Visit active Patients Load UI",
+              "timedOut": null,
+              "duration": 11408,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\ncy.url().then(function (url) {\n  if (url.indexOf(\"auth\") !== -1) {\n    cy.get(\"#username\").type(username);\n    cy.get(\"#password\").type(password);\n    cy.get(\"#kc-login\").click();\n  } //cy.get(\"ls-page-header[type=active_patients]\").should(\"be.visible\");\n  //start logged\n\n  cy.wait(2000);\n  cy.get('[image=\"active-patients.png\"]').find('a').click();\n  cy.wait(2000);\n  var pid = \"1456\"; //getting patient id from span-div-tr-td-checkbox \n  if (discharge_data) {\n    if (discharge_data.patients.length > 0) {\n      for (let index = 0; index < discharge_data.patients.length; index++) {\n        const element = discharge_data.patients[index];\n        console.log(element);\n        var el = cy.get(\"span\").contains(element);\n        if (el) {\n          el.parent().parent().parent().get('span').contains(' Discharge ').parent().click({\n            force: true\n          });\n        } else {\n          console.log(\"Patient not found !\");\n        }\n        cy.wait(1000);\n      }\n    }\n  }\n  cy.wait(1000); //cy.get('span')\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'PAT158727035' within the element: [ <span.ng-star-inserted>, 510 more... ] but never did.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'PAT158727035' within the element: [ <span.ng-star-inserted>, 510 more... ] but never did.\n    at Context.eval (https://dev2a.lifesignals.com/__cypress/tests?p=cypress/integration/dischargebutton.spec.js:134:37)",
+                "diff": null
+              },
+              "uuid": "8a49f171-44d0-4a3d-9ea2-c6a90ed11069",
+              "parentUUID": "e4f93176-cbc6-4377-91c9-2c5b916ed49d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "8a49f171-44d0-4a3d-9ea2-c6a90ed11069"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 11408,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "71967a57-7710-4af2-abb6-dfb497f501c9",
+      "title": "",
+      "fullFile": "cypress/integration/dischargedpatients.spec.js",
+      "file": "cypress/integration/dischargedpatients.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "cce772e6-fa49-4475-8246-3ecaaf911bdb",
+          "title": "Visit discharge patients",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Load UI",
+              "fullTitle": "Visit discharge patients Load UI",
+              "timedOut": null,
+              "duration": 6724,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\ncy.url().then(function (url) {\n  if (url.indexOf(\"auth\") !== -1) {\n    cy.get(\"#username\").type(username);\n    cy.get(\"#password\").type(password);\n    cy.get(\"#kc-login\").click();\n  } //cy.get(\"ls-page-header[type=active_patients]\").should(\"be.visible\");\n  //start logged\n\n  cy.wait(2000);\n  cy.get('[image=\"completed.png\"]').find('a').click();\n  cy.wait(2000);\n});",
+              "err": {},
+              "uuid": "caecd099-77c6-4568-ab22-16642ff327bb",
+              "parentUUID": "cce772e6-fa49-4475-8246-3ecaaf911bdb",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "caecd099-77c6-4568-ab22-16642ff327bb"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6724,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "3cb5e0ae-1ab7-4182-a2a4-267761864853",
+      "title": "",
+      "fullFile": "cypress/integration/login.spec.js",
+      "file": "cypress/integration/login.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "91edc8de-53f9-4a09-b750-f2f6c1cc639d",
+          "title": "login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Login using username and password",
+              "fullTitle": "login Login using username and password",
+              "timedOut": null,
+              "duration": 9079,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\ncy.get('#username').type(username);\ncy.get('#password').type(password);\ncy.get('#kc-login').click();\ncy.wait(2000);\ncy.get('.user-icon >a').click();\ncy.wait(2000);\ncy.get('.col-sm-6 > button').click();\ncy.wait(2000);",
+              "err": {},
+              "uuid": "5b784d50-c8df-42c7-b18c-c9587d4b3c68",
+              "parentUUID": "91edc8de-53f9-4a09-b750-f2f6c1cc639d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5b784d50-c8df-42c7-b18c-c9587d4b3c68"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 9079,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "592f0dde-0044-44fc-9dbf-1ce2ccb41024",
+      "title": "",
+      "fullFile": "cypress/integration/monitoring-dashboard.spec.js",
+      "file": "cypress/integration/monitoring-dashboard.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "18f9def2-7dc1-464c-9727-1e6b3ef24253",
+          "title": "Visit Monitoring Dashboard",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Load UI",
+              "fullTitle": "Visit Monitoring Dashboard Load UI",
+              "timedOut": null,
+              "duration": 12251,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\ncy.url().then(function (url) {\n  if (url.indexOf(\"auth\") !== -1) {\n    cy.get(\"#username\").type(username);\n    cy.get(\"#password\").type(password);\n    cy.get(\"#kc-login\").click();\n  } //cy.get(\"ls-page-header[type=active_patients]\").should(\"be.visible\");\n  //start logged\n\n  cy.wait(2000);\n  cy.get('a').contains('Monitoring Dashboard').click();\n  cy.wait(2000); //getting patientid from span -div-div-div-div-matcard(to click card and see zoom view)\n  cy.get('span').contains('PAT413376848').parent().parent().parent().parent().click({\n    force: true\n  }); //click alerts button\n  cy.wait(2000); //click the alert button\n  cy.get('span').contains('notifications_none').parent().parent().click({\n    force: true\n  });\n  cy.wait(2000); //button configure parameter\n  cy.get('span').contains(' Configure Parameters ').parent().click();\n  cy.wait(3000); //button configure technical\n  cy.get('span').contains(' Configure Technical ').parent().click();\n  cy.wait(3000); //button configure destinations\n  cy.get('span').contains(' Configure Destinations ').parent().click();\n  cy.wait(3000);\n  cy.get('span').contains(' Configure Others ').parent().click();\n  cy.wait(1000);\n  cy.get('mat-icon').contains('close').click({\n    force: true\n  }); //get span content and parent element\n  //cy.get('span').contains(' Add to Dashboard ').parent().click()\n  // var pid = \"1456\";\n  // //getting patient id from span-div-tr-td-checkbox \n  // if(admit_data){\n  //     if(admit_data.patients.length > 0){\n  //         for (let index = 0; index < admit_data.patients.length; index++) {\n  //             const element = admit_data.patients[index];\n  //             cy.get(\"span\").contains(element).parent().parent().parent().find(\"mat-checkbox\").click();\n  //             cy.wait(1000);\n  //         }\n  //     }\n  // }\n  // cy.wait(1000);\n  // cy.get(\"span\").contains(\" Add to Dashboard \").parent().click();\n  // cy.wait(1000);\n  //cy.get('.d-lg-flex d-md-none d-sm-none d-none my-2 > button').click()\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'PAT413376848' within the element: [ <span.ng-star-inserted>, 70 more... ] but never did.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'PAT413376848' within the element: [ <span.ng-star-inserted>, 70 more... ] but never did.\n    at Context.eval (https://dev2a.lifesignals.com/__cypress/tests?p=cypress/integration/monitoring-dashboard.spec.js:128:22)",
+                "diff": null
+              },
+              "uuid": "77b91e30-6ddf-4d1f-b759-eee4a1008535",
+              "parentUUID": "18f9def2-7dc1-464c-9727-1e6b3ef24253",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "77b91e30-6ddf-4d1f-b759-eee4a1008535"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 12251,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "3de2761e-7615-4184-9087-6da404d3cc4e",
+      "title": "",
+      "fullFile": "cypress/integration/parameteralerts.spec.js",
+      "file": "cypress/integration/parameteralerts.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9277b59e-8b4f-4087-91e8-b9c4be08e529",
+          "title": "Visit technical alerts",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Load UI",
+              "fullTitle": "Visit technical alerts Load UI",
+              "timedOut": null,
+              "duration": 6803,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\ncy.url().then(function (url) {\n  if (url.indexOf(\"auth\") !== -1) {\n    cy.get(\"#username\").type(username);\n    cy.get(\"#password\").type(password);\n    cy.get(\"#kc-login\").click();\n  } //cy.get(\"ls-page-header[type=active_patients]\").should(\"be.visible\");\n  //start logged\n\n  cy.wait(2000);\n  cy.get('[image=\"parameter.png\"]').find('a').click();\n  cy.wait(2000);\n});",
+              "err": {},
+              "uuid": "2ab4951e-025c-4aa8-a65f-bd8e971f0ac0",
+              "parentUUID": "9277b59e-8b4f-4087-91e8-b9c4be08e529",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2ab4951e-025c-4aa8-a65f-bd8e971f0ac0"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6803,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "32e7fb35-051a-4407-84f1-6e02824b6e1d",
+      "title": "",
+      "fullFile": "cypress/integration/settings.spec.js",
+      "file": "cypress/integration/settings.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "fe3959f4-9bd6-47e9-a4b3-91e262df974c",
+          "title": "login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Login using username and password",
+              "fullTitle": "login Login using username and password",
+              "timedOut": null,
+              "duration": 13030,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\ncy.get('#username').type(username);\ncy.get('#password').type(password);\ncy.get('#kc-login').click();\ncy.wait(2000); //click settings button\ncy.get('span').contains('Settings').click();\ncy.wait(2000); //manage users\n//manage groups\ncy.get('[image=\"managegroup.png\"]').find('a').click();\ncy.wait(2000); //manage configuration\ncy.get('[image=\"manageuser.png\"]').find('a').click();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `[image=\"manageuser.png\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `[image=\"manageuser.png\"]`, but never found it.\n    at Context.eval (https://dev2a.lifesignals.com/__cypress/tests?p=cypress/integration/settings.spec.js:125:8)",
+                "diff": null
+              },
+              "uuid": "fd551553-8a4a-4fb1-8bee-fd6f747877a6",
+              "parentUUID": "fe3959f4-9bd6-47e9-a4b3-91e262df974c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "fd551553-8a4a-4fb1-8bee-fd6f747877a6"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 13030,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "73d1f846-84f2-43e1-920b-6ef938cca964",
+      "title": "",
+      "fullFile": "cypress/integration/technicalalerts.spec.js",
+      "file": "cypress/integration/technicalalerts.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "578b0df8-d1e5-4406-b55e-e352eb25cdbf",
+          "title": "Visit technical alerts",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Load UI",
+              "fullTitle": "Visit technical alerts Load UI",
+              "timedOut": null,
+              "duration": 6598,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\ncy.url().then(function (url) {\n  if (url.indexOf(\"auth\") !== -1) {\n    cy.get(\"#username\").type(username);\n    cy.get(\"#password\").type(password);\n    cy.get(\"#kc-login\").click();\n  } //cy.get(\"ls-page-header[type=active_patients]\").should(\"be.visible\");\n  //start logged\n\n  cy.wait(2000);\n  cy.get('[image=\"technical.png\"]').find('a').click();\n  cy.wait(2000);\n});",
+              "err": {},
+              "uuid": "d64b3ae2-4fe6-49dc-8521-a1a33284477f",
+              "parentUUID": "578b0df8-d1e5-4406-b55e-e352eb25cdbf",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d64b3ae2-4fe6-49dc-8521-a1a33284477f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6598,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/json",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

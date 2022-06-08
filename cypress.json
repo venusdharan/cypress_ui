@@ -1,0 +1,8 @@
+{
+   "baseUrl": "https://dev2a.lifesignals.com",
+   "projectId": "bp2a4r",
+   "reporter": "cypress-multi-reporters",
+   "reporterOptions": {
+      "configFile": "reporter-config.json"
+   }
+}
