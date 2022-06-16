@@ -17,13 +17,14 @@
  */
 // eslint-disable-next-line no-unused-vars
 
-var tinycypress = require("../../../tiny_cypress");
+var tinycypress = require("tiny_cypress");
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
   var settings = {
     token : "hello",
     baseUrl : "http://localhost:4500",
+    project_id : "crneycpiusr"
   }
 
   tinycypress.init(on, config, settings);
