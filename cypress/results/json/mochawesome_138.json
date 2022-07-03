@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-20T14:57:13.179Z",
+    "end": "2022-06-20T14:57:23.871Z",
+    "duration": 10692,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "026a8e06-b670-46df-ab01-08128eca8a23",
+      "title": "",
+      "fullFile": "cypress/e2e/usercreation.spec.js",
+      "file": "cypress/e2e/usercreation.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7487a972-ed81-446d-98b7-4a13a150b10e",
+          "title": "login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Login using username and password",
+              "fullTitle": "login Login using username and password",
+              "timedOut": null,
+              "duration": 10575,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\ncy.get('#username').type(username);\ncy.get('#password').type(password);\ncy.get('#kc-login').click();\ncy.wait(2000);\ncy.get('span').contains('Settings').click();\ncy.wait(2000); // //manage users\n// cy.get('[image=\"manageuser.png\"]').find('a').click();\n// cy.wait(2000);\n// //add user button click\n// cy.get('mat-icon').contains('add').parent().parent().click();\n// cy.wait(2000);\n// cy.get('#firstname').type(userdata.first_name || faker.name.firstName());\n// cy.get('#lastname').type(userdata.last_name || faker.name.lastName())\n// cy.get('#email').type(userdata.email_id || faker.internet.email().toLowerCase());\n// cy.get('input[placeholder=\"081234 56789\"]').type(userdata.phone || faker.phone.phoneNumber());\n// cy.get('span').contains(userdata.role).parent().parent().parent().click()\n// cy.get('span').contains(' + Group ').parent().click();\n// cy.wait(1000);\n// cy.get('mat-select[placeholder*=\"Clinical condition\"]').click();\n// cy.wait(1000);\n// cy.get('span').contains(userdata.group).parent().click();\n// cy.wait(1000);\n// cy.get('span').contains(' Add ').parent().click();\n// cy.wait(1000);\n// cy.get('span').contains(' Save ').parent().click();\n// cy.get('mat-icon').contains('add').parent().parent().click();\n// cy.wait(2000);\n// cy.get('#firstname').type(userdata.first_name);\n// cy.get('#lastname').type(userdata.last_name);\n// cy.get('#email').type(userdata.email_id);\n// cy.get('input[placeholder=\"081234 56789\"]').type(userdata.phone);\n// cy.get('span').contains(userdata.role).parent().parent().parent().click()\n// cy.get('span').contains(' + Group ').parent().click();\n// cy.wait(1000);\n// cy.get('mat-select[placeholder*=\"Clinical condition\"]').click();\n// cy.wait(1000);\n// cy.get('span').contains(userdata.group).parent().click();\n// cy.wait(1000);\n// cy.get('span').contains(' Add ').parent().click();\n// cy.wait(1000);\n// cy.get('span').contains(' Save ').parent().click();\n// cy.get('mat-error').contains(' USER ALREADY EXISTS WITH THIS EMAIL/PHONE NUMBER!! ').should(\"be.visible\")\n// cy.wait(1000);\n// cy.get('ls-widget').contains(\" madalyn_effertz@hotmail.com \").parent().parent().parent().find(\"mat-slide-toggle\").click();\n// cy.wait(500);\n// cy.get('span').contains(' Confirm ').click();",
+              "err": {},
+              "uuid": "7515cc2a-50d1-4816-bd66-680171068ba4",
+              "parentUUID": "7487a972-ed81-446d-98b7-4a13a150b10e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7515cc2a-50d1-4816-bd66-680171068ba4"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 10575,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/json",
+        "files": [
+          "./cypress/results/json/*.json"
+        ],
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
